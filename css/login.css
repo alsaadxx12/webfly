@@ -1,0 +1,413 @@
+/* إعدادات أساسية */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #ff5722;
+    --text-color: #fff;
+    --button-text-color: #fff;
+    --bg-color-dark: rgba(0, 0, 0, 0.75);
+    --box-shadow-light: 0 10px 30px rgba(76, 175, 80, 0.5);
+    --box-shadow-dark: 0 10px 30px rgba(51, 51, 51, 0.7);
+    --transition-time: 0.5s;
+    --perspective-depth: 1000px;
+    --error-bg-color: rgba(255, 0, 0, 0.7);
+    --error-border-color: rgba(255, 0, 0, 0.9);
+    --container-animation-duration: 6s;
+}
+
+/* إعادة تعيين الأنماط الافتراضية */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* تطوير الخلفية للصفحة */
+/* تطوير الخلفية للصفحة */
+body {
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background-color: #000;
+    background-image: url('https://cdn.infra.luxota.cloud/files/20240630/249a5123473fc7170f59/file.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    animation: moveBackground 30s linear infinite;
+    perspective: var(--perspective-depth);
+    transition: background-image 1.5s ease-in-out, transform 1.5s ease-in-out;
+}
+
+/* الحركة الطبيعية لخلفية الصفحة */
+@keyframes moveBackground {
+    0% {
+        background-position: center center;
+    }
+    50% {
+        background-position: center top;
+    }
+    100% {
+        background-position: center center;
+    }
+}
+
+
+/* تأثير المطر */
+.rain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.raindrop {
+    position: absolute;
+    top: -10%;
+    width: 1px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    animation: fall linear infinite;
+    opacity: 0.5;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(120%);
+    }
+}
+
+/* أيقونة اللغة مع حركة دورانية */
+.language-icon {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    animation: rotateIcon 10s linear infinite;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.language-icon:hover {
+    transform: scale(1.2) rotate(15deg);
+    box-shadow: 0 0 20px #17d700;
+}
+
+@keyframes rotateIcon {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* مبدل اللغة */
+.language-switcher {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 1000;
+}
+
+.language-switcher .dropdown {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    padding: 10px;
+    z-index: 10;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.language-switcher:hover .dropdown {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.dropdown li {
+    list-style: none;
+}
+
+.dropdown li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+    padding: 5px 10px;
+    transition: background-color 0.3s, padding 0.3s;
+}
+
+.dropdown li a:hover {
+    background-color: #17d700;
+    border-radius: 5px;
+    padding-left: 15px;
+}
+
+/* حاوية الواجهة */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 420px;
+    z-index: 1;
+    animation: containerFadeIn 1s ease forwards;
+}
+
+@keyframes containerFadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.login-box {
+    background-color: var(--bg-color-dark);
+    padding: 50px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: var(--box-shadow-dark);
+    transition: transform var(--transition-time) ease, box-shadow var(--transition-time) ease;
+}
+
+.login-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 60px 90px rgba(0, 0, 0, 0.9);
+}
+
+.logo {
+    width: 180px;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease;
+    animation: logoBounce 3s ease-in-out infinite;
+}
+
+@keyframes logoBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.login-box p {
+    color: #e0e0e0;
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    animation: fadeInText 1.5s ease forwards;
+}
+
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input-group i {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px 50px;
+    border-radius: 30px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 1rem;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.input-group input:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(23, 215, 0, 0.7);
+    outline: none;
+}
+
+/* إضافة تأثير طفو على الحقول */
+.input-group input:hover {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* تحسين الأزرار */
+button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s;
+    position: relative;
+    z-index: 1;
+    color: var(--button-text-color);
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    left: -50px;
+    top: -50px;
+    width: 0;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(45deg);
+    transition: width 0.5s ease;
+}
+
+button:hover::before {
+    width: 250%;
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+button i {
+    margin-right: 10px;
+}
+
+.login-btn {
+    background: var(--primary-color);
+    box-shadow: 0 15px 30px rgba(0, 123, 255, 0.6);
+}
+
+.signup-btn {
+    background: var(--secondary-color);
+    box-shadow: 0 15px 30px rgba(255, 87, 34, 0.6);
+}
+
+.back-btn {
+    background: #333;
+    box-shadow: 0 15px 30px rgba(51, 51, 51, 0.6);
+}
+
+/* رسالة الخطأ أو الرسائل العامة */
+.message-container {
+    display: none; /* إخفاء الرسالة في الوضع الافتراضي */
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 14px;
+    animation: fadeIn 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.message-container.show {
+    display: block; /* إظهار الرسالة عند الحاجة */
+}
+
+.message-container.error {
+    background: var(--error-bg-color); /* لون خلفية للخطأ */
+    color: var(--text-color);
+    border: 1px solid var(--error-border-color); /* حدود لتوضيح الخطأ */
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+}
+
+.message-container.success {
+    background: rgba(23, 215, 0, 0.7); /* لون خلفية لرسائل النجاح */
+    color: var(--text-color);
+    border: 1px solid rgba(23, 215, 0, 0.9); /* حدود لتوضيح النجاح */
+    box-shadow: 0 5px 15px rgba(23, 215, 0, 0.3);
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* تحسين استجابة التصميم للأجهزة المختلفة */
+@media (max-width: 768px) {
+    .login-box {
+        padding: 30px;
+    }
+    .logo {
+        width: 150px;
+    }
+    .login-box p {
+        font-size: 1.1rem;
+    }
+    button {
+        font-size: 1rem;
+        padding: 12px;
+    }
+    .input-group input {
+        padding: 12px 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .language-switcher {
+        top: 15px;
+        right: 15px;
+    }
+    .login-box {
+        padding: 20px;
+    }
+    .logo {
+        width: 120px;
+    }
+    .input-group i {
+        left: 10px;
+    }
+    .input-group input {
+        padding: 10px 35px;
+    }
+}
+
+/* تحسين إمكانية الوصول */
+button:focus,
+.input-group input:focus {
+    outline: 2px dashed #17d700;
+    outline-offset: 4px;
+}
+button i {
+    margin-right: 10px;
+    font-size: 1.2rem; /* جعل الأيقونات بحجم مناسب */
+    vertical-align: middle; /* محاذاة الأيقونات بشكل صحيح مع النص */
+}

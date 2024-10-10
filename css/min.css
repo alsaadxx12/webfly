@@ -1,0 +1,349 @@
+/* الكود المحسن لشكل الحاويات */
+
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #ff5722;
+    --accent-color: #17d700;
+    --text-color: #fff;
+    --bg-color-dark: #000;
+    --box-shadow-dark: 0 10px 30px rgba(51, 51, 51, 0.7);
+    --transition-time: 0.5s;
+    --navbar-height: 80px;
+    --font-primary: 'Cairo', sans-serif;
+    --overlay-color: rgba(0, 0, 0, 0.7); /* لون شفاف داكن */
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+/* إعدادات أساسية */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: #000;
+    color: var(--text-color);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* تحسين شريط التنقل */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: transparent;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    height: var(--navbar-height);
+    transition: background-color var(--transition-time), box-shadow var(--transition-time);
+}
+
+.navbar.scrolled {
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow-dark);
+}
+
+.navbar .logo img {
+    width: 140px;
+    transition: transform 0.3s ease;
+}
+
+.navbar .logo img:hover {
+    transform: scale(1.1);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--primary-color);
+}
+
+/* قسم البطل مع خلفيات متعددة */
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero .background-images {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    animation: slideLeftToRight 30s infinite ease-in-out;
+}
+
+@keyframes slideLeftToRight {
+    0% {
+        left: -100%;
+    }
+    10% {
+        left: 0;
+    }
+    30% {
+        left: 0;
+    }
+    40% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.hero .background-images:nth-child(1) {
+    animation-delay: 5s;
+}
+
+.hero .background-images:nth-child(2) {
+    animation-delay: 10s;
+}
+
+.hero .background-images:nth-child(3) {
+    animation-delay: 20s;
+}
+
+.hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.hero .content {
+    position: relative;
+    z-index: 2;
+    transform: translateY(50px);
+    opacity: 0;
+    animation: fadeInUp 2s ease-in-out forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: fadeInDown 1.5s ease-in-out forwards;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* الأزرار */
+.btn {
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: background-color var(--transition-time), transform var(--transition-time);
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.btn.primary {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+.btn.secondary {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* قسم الخدمات */
+.services {
+    padding: 60px 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.services h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #333;
+    font-weight: 700;
+}
+
+.service-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.service-box {
+    flex: 1 1 calc(25% - 40px);
+    max-width: calc(25% - 40px);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 350px; /* زيادة ارتفاع الحاوية */
+    border-radius: 15px; /* زيادة انحناء الزوايا */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); /* تحسين الظلال */
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.service-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.service-box:hover::before {
+    opacity: 1;
+}
+
+.service-box .overlay {
+    position: absolute;
+    bottom: -100%; /* يبدأ مخفيًا من الأسفل */
+    left: 0;
+    width: 100%;
+    height: 100px; /* ارتفاع الشريط */
+    background: var(--overlay-color); /* لون الشريط */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: bottom 0.3s ease;
+}
+
+.service-box:hover .overlay {
+    bottom: 0; /* يظهر الشريط عند التأشير */
+}
+
+.service-box .overlay h3,
+.service-box .overlay p {
+    color: #fff;
+    margin: 5px 0;
+}
+
+.service-box .overlay h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.service-box .overlay p {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.service-box:hover {
+    transform: translateY(-10px); /* رفع الحاوية عند التأشير */
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* إضافة تأثير دوران خفيف عند التأشير */
+.service-box:hover {
+    transform: translateY(-10px) scale(1.02) rotate(1deg);
+}
+
+/* خلفيات الحاويات */
+.flight-services {
+    background-image: url('https://cdn.infra.luxota.cloud/files/20240629/glf23c164a0db3ad73e4/file.jpg');
+}
+
+.hotel-services {
+    background-image: url('https://cdn.infra.luxota.cloud/files/20240629/o4ta95121e554144ec11/file.jpg');
+}
+
+.tour-services {
+    background-image: url('https://cdn.infra.luxota.cloud/files/20240629/41863c87cab350c8cac4/file.png');
+}
+
+.visa-services {
+    background-image: url('https://cdn.infra.luxota.cloud/files/20240630/y8nu91680d8acc2da4ca/file.png');
+}
+
+/* تحسين استجابة الحاويات */
+@media (max-width: 1200px) {
+    .service-box {
+        flex: 1 1 calc(45% - 40px);
+        max-width: calc(45% - 40px);
+    }
+}
+
+@media (max-width: 768px) {
+    .service-box {
+        flex: 1 1 calc(100% - 40px);
+        max-width: calc(100% - 40px);
+    }
+}
+
+/* شريط التذييل */
+footer {
+    background-color: var(--bg-color-dark);
+    padding: 20px;
+    text-align: center;
+    color: var(--text-color);
+    font-weight: 400;
+}

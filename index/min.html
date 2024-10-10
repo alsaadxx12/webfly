@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - FLY4ALL</title>
+    <!-- استيراد الخطوط والأيقونات -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <!-- ملف CSS الخارجي -->
+    <link rel="stylesheet" href="../css/min.css">
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="../images/fly_logo.png" alt="FLY4ALL Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="../index/login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- خلفية متحركة مع الرسالة الرئيسية -->
+    <header class="hero">
+        <div class="background-images" style="background-image: url('https://cdn.infra.luxota.cloud//files/20240629/4pbe7222d239523fcd18/file.jpg');"></div>
+        <div class="background-images" style="background-image: url('https://cdn.infra.luxota.cloud//files/20240630/t78i7633e17d150e248b/file.jpg');"></div>
+        <div class="background-images" style="background-image: url('https://cdn.infra.luxota.cloud//files/20240630/249a5123473fc7170f59/file.png');"></div>
+    
+        <div class="overlay"></div>
+        <div class="content">
+            <h1>Welcome to FLY4ALL</h1>
+            <p>Experience the freedom of the skies with us.</p>
+            <a href="#" class="btn primary">Get Started</a>
+            <a href="#" class="btn secondary">Learn More</a>
+        </div>
+    </header>
+
+   <div class="services">
+    <h2>خدماتنا</h2>
+    <div class="service-boxes">
+        <div class="service-box flight-services">
+            <div class="overlay">
+                <h3>حجوزات الطيران</h3>
+                <p>أفضل الأسعار وأسرع الحجوزات</p>
+            </div>
+        </div>
+        <div class="service-box hotel-services">
+            <div class="overlay">
+                <h3>حجوزات الفنادق</h3>
+                <p>إقامة فاخرة ومريحة</p>
+            </div>
+        </div>
+        <div class="service-box tour-services">
+            <div class="overlay">
+                <h3>الجولات السياحية</h3>
+                <p>اكتشف أجمل الأماكن</p>
+            </div>
+        </div>
+        <div class="service-box visa-services">
+            <div class="overlay">
+                <h3>خدمات التأشيرات</h3>
+                <p>إجراءات سهلة وسريعة</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    <!-- شريط التذييل -->
+    <footer>
+        <p>&copy; 2024 FLY4ALL. All rights reserved.</p>
+    </footer>
+
+    <!-- ملف الجافا سكريبت -->
+    <script>
+        // تأثير التمرير على الشريط
+        window.addEventListener("scroll", function() {
+            const navbar = document.querySelector(".navbar");
+            if (window.scrollY > 50) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        });
+    </script>
+</body>
+</html>
